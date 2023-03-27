@@ -1,7 +1,8 @@
 <?php
 include 'db_connection.php';
 
-function calculate_final_grade($scores) {
+function calculate_final_grade($scores)
+{
     // Replace with your own grading logic
     return array_sum($scores) / count($scores);
 }
@@ -24,5 +25,11 @@ echo "Final Grade: " . $final_grade;
 
 // Close the connection
 $conn->close();
+
+<html>
+<body>
+    <h1>dfsds</h1>
+</body>
+</html>
 
 ?>
