@@ -8,6 +8,7 @@ require __DIR__ . '/db/db_import_data.php';
 
 // Connect to mysql. Note: Change the password in this function to your computer password.
 $conn  = connectToDB();
+echo "Connected successfully\n";
 
 // Create Database
 createSchema($conn);

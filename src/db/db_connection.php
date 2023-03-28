@@ -16,7 +16,6 @@ function connectToDB($dbname=null) {
     
     } 
     
-    echo "Connected successfully\n";
     return $conn;
 }
 ?>
