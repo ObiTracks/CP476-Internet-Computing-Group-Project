@@ -27,17 +27,21 @@
       // Loop through each row in the result set and add it to the table
       while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
+        echo "<form class='handleUpdate' action='" . $_SERVER['PHP_SELF'] . "' method='POST'>";
         echo "<td>" . $row["Student_Name"] . "</td>";
         echo "<td>" . $row["Student_ID"] . "</td>";
         echo "<td>" . $row["Course_Code"] . "</td>";
-        echo "<td>" . $row["Test_1"] . "</td>";
-        echo "<td>" . $row["Test_2"] . "</td>";
-        echo "<td>" . $row["Test_3"] . "</td>";
-        echo "<td>" . $row["Final_Exam"] . "</td>";
+        echo "<td><input type='number' step='0.1' name='Test_1' max='99.9' min='0' value='" . $row["Test_1"] . "' ></td>";
+        echo "<td><input type='number' step='0.1' name='Test_2' max='99.9' min='0' value='" . $row["Test_2"] . "' ></td>";
+        echo "<td><input type='number' step='0.1' name='Test_3' max='99.9' min='0' value='" . $row["Test_3"] . "' ></td>";
+        echo "<td><input type='number' step='0.1' name='Final_Exam' max='99.9' min='0' value='" . $row["Final_Exam"] . "' ></td>";
         echo "<td>" . $row["Test_1"]/100*20 + $row["Test_2"]/100*20 + $row["Test_3"]/100*20 + $row["Final_Exam"]/100*40 . "</td>";
-        echo "<td><input type = 'submit' value='Edit'></td>";
-        echo "<td><input type = 'hidden' value='". $row["Student_ID"] . "_" . $row["Course_Code"] . "' name='Edit'></td>";
-        echo "</tr>"; 
+        echo "<td><input type='submit' name='Save' value='Save'></td>";
+        echo "<td><input type='hidden' value='". $row["Student_ID"] . "' name='Student_ID'></td>";
+        echo "<td><input type='hidden' value='". $row["Course_Code"] . "' name='Course_Code'></td>";
+
+        echo "</form>";
+        echo "</tr>";
       }
 
       // End the table 
@@ -73,6 +77,43 @@
     return $sql;
   }
 
+
+    // Check if values were submitted and Send them to db
+    if (array_key_exists("Save", $_POST) && isset($_POST["Save"])) {
+      sendGradeUpdatesToDB();
+    } 
+  
+    function sendGradeUpdatesToDB(){
+      $conn  = connectToDB("StudentGradesDB");
+  
+      // Data does not need to be validated due to restrictions placed on user input
+      $test_1 = $_POST["Test_1"];
+      $test_2 = $_POST["Test_2"];
+      $test_3 = $_POST["Test_3"];
+      $final_exam = $_POST["Final_Exam"];
+      $student_id = $_POST["Student_ID"];
+      $course_code = $_POST["Course_Code"];
+  
+      $sql = 
+      "
+      UPDATE StudentGradesDB.Course_Table AS Courses
+      SET Courses.Test_1=" . $test_1 . 
+      ", Courses.Test_2=" . $test_2 . 
+      ", Courses.Test_3=" . $test_3 . 
+      ", Courses.Final_Exam=" . $final_exam . 
+      "
+      WHERE Courses.Course_Code='" . $course_code . 
+      "' AND Courses.Student_ID=" . $student_id;
+  
+      echo $sql;
+      $result = mysqli_query($conn, $sql);
+  
+      $conn->close();
+  
+      return $result;
+  }
+  
+
 ?>
 
 <!doctype html>
@@ -107,12 +148,12 @@
 		<input type="submit" name="submit" value="Submit">
 	</form>
 
-  <form class='handleUpdate' action="handleUpdate.php" method="POST">
+  <!--<form class='handleUpdate' action='<?php echo $_SERVER['PHP_SELF']; ?>' method='POST'> -->
     <?php 
     print_r($_POST);
     displayTable(); 
     ?>
-  </form>
+  <!-- </form> -->
 
 
 
