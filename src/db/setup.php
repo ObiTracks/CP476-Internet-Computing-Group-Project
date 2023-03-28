@@ -1,8 +1,8 @@
 <?php
-require __DIR__ . '/db/db_connection.php';
-require __DIR__ . '/db/db_create.php';
-require __DIR__ . '/db/db_create_tables.php';
-require __DIR__ . '/db/db_import_data.php';
+require __DIR__ . '/db_connection.php';
+require __DIR__ . '/db_create.php';
+require __DIR__ . '/db_create_tables.php';
+require __DIR__ . '/db_import_data.php';
 
 // Sets up the DB on your computer
 

@@ -25,6 +25,7 @@
       echo "<tr><th>Student Name</th><th>Student ID</th><th>Course Code</th><th>Test 1</th><th>Test 2</th><th>Test 3</th><th>Final Exam</th><th>Final Grade</th><th></th><th></th></tr>";
 
       // Loop through each row in the result set and add it to the table
+      // TO DO: MAKE THE PHP SELF CALL SAFE
       while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
         echo "<form class='handleUpdate' action='" . $_SERVER['PHP_SELF'] . "' method='POST'>";
@@ -39,7 +40,6 @@
         echo "<td><input type='submit' name='Save' value='Save'></td>";
         echo "<td><input type='hidden' value='". $row["Student_ID"] . "' name='Student_ID'></td>";
         echo "<td><input type='hidden' value='". $row["Course_Code"] . "' name='Course_Code'></td>";
-
         echo "</form>";
         echo "</tr>";
       }
@@ -105,7 +105,6 @@
       WHERE Courses.Course_Code='" . $course_code . 
       "' AND Courses.Student_ID=" . $student_id;
   
-      echo $sql;
       $result = mysqli_query($conn, $sql);
   
       $conn->close();
@@ -120,43 +119,20 @@
 <html>
   <head>
     <title>Grade Editor</title>
-    <style>
-      table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-      }
-
-      th {
-        background-color: #f2f2f2;
-      }
-	  </style>
+    <link rel="stylesheet" href="/Project//CP476-Internet-Computing-Group-Project//public//css//styles.css">
   </head>
-
   <body>
     <h3 class="heading"> Please type a student ID to see their grades: </h3>
   
-  <!-- Search bar -->
-	<form class="handleUserSearch" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		<label for="search">Search:</label>
-		<input type="text" name="search" id="search">
-		<input type="submit" name="submit" value="Submit">
-	</form>
-
-  <!--<form class='handleUpdate' action='<?php echo $_SERVER['PHP_SELF']; ?>' method='POST'> -->
-    <?php 
-    print_r($_POST);
-    displayTable(); 
-    ?>
-  <!-- </form> -->
-
-
-
+    <!-- Search bar -->
+    <form class="handleUserSearch" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <label for="search">Search:</label>
+      <input type="text" name="search" id="search">
+      <input type="submit" name="submit" value="Submit">
+    </form>
+    
+    <!-- Table -->
+    <?php displayTable(); ?>
   </body>
 </html>
 

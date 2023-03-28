@@ -32,11 +32,11 @@ function getSQLForTables(){
     "
     CREATE TABLE `Course_Table` (
         `Student_ID` int(9) NOT NULL,
-        `Course_Code` varchar(255) NOT NULL,
-        `Test_1` decimal(3,1) NOT NULL,
-        `Test_2` decimal(3,1) NOT NULL,
-        `Test_3` decimal(3,1) NOT NULL,
-        `Final_Exam` decimal(3,1) NOT NULL,
+        `Course_Code` char(5) NOT NULL,
+        `Test_1` decimal(4,1) NOT NULL, CHECK (`Test_1` >= 0 AND `Test_1` <= 100),
+        `Test_2` decimal(4,1) NOT NULL, CHECK (`Test_2` >= 0 AND `Test_2` <= 100),
+        `Test_3` decimal(4,1) NOT NULL, CHECK (`Test_3` >= 0 AND `Test_2` <= 100),
+        `Final_Exam` decimal(4,1) NOT NULL, CHECK (`Final_Exam` >= 0 AND `Final_Exam` <= 100),
         PRIMARY KEY (`Student_ID`, `Course_Code`),
         FOREIGN KEY (`Student_ID`) REFERENCES `Name_Table`(`Student_ID`)
     );
