@@ -1,0 +1,70 @@
+/* Style for the page title */
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+/* Font style */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+/* Style the table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2rem 0;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  /* Style the table headers */
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  /* Style the form inputs */
+  input[type="number"] {
+    width: 5rem;
+    padding: 0.25rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #f2f2f2;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+
+  input[type="text"] {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-right: 20px;
+  }
+
+  input[type="submit"] {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
