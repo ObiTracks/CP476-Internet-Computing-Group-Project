@@ -1,0 +1,63 @@
+h1 {
+    font-size: 36px;
+    margin-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  form {
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 50px;
+  }
+
+  label {
+    font-size: 18px;
+    margin-right: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  input[type="password"] {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-right: 20px;
+  }
+
+  input[type="submit"] {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px; 
+  }
